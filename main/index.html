@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
+    <title>Vitrine de Projetos</title>
+</head>
+<body>
+    <div>
+        <h1>Vitrine de Projetos</h1>
+        <br>
+        <h3>Projetos feitos em sala de aula e atividades extras.</h3>
+
+        <!-- Conteúdo da Vitrine-->
+        <div class="container-conteudo">
+
+            <!-- Relógio Digital ✓ -->
+            <div class="relogio-digital">
+                <div class="rd-container">
+                    <p><span id="time">--:--:--</span></p>
+                </div>
+                
+                <script>
+                    function showTime(){
+                        let now = new Date();
+
+                        let hour = String(now.getHours()).padStart(2, "0");
+                        let minutes = String(now.getMinutes()).padStart(2, "0");
+                        let seconds = String(now.getSeconds()).padStart(2, "0");
+
+
+                        document.getElementById("time").textContent = `${hour}:${minutes}:${seconds}`;
+                    }
+
+                    showTime();
+                    setInterval(showTime, 500);
+                </script> 
+            </div>
+
+            <!-- Cálculo de Prêmio ✓ -->
+            <div class="calculo-premio">
+                <p>Cálculo de Prêmio do Concurso</p>
+
+                <label>Valor do Prêmio:</label>
+                <input type="number" id="cp-valorPremio">
+                <br><br>
+
+                <label>Pontuação 1º Lugar:</label>
+                <input type="number" id="cp-pt1">
+                <br>
+
+                <label>Pontuação 2º Lugar:</label>
+                <input type="number" id="cp-pt2">
+                <br>
+
+                <label>Pontuação 3º Lugar:</label>
+                <input type="number" id="cp-pt3">
+                <br><br>
+
+                <button onclick="calcularPremio()">Calcular</button>
+                <br><br>
+
+                <p>Valores dos Prêmios:</p>
+                <div id="cp-resultado"></div>
+                <script src="js/cp_script.js"></script>
+            </div>
+
+            <!-- Avaliação de Semestre ✓ -->
+            <div class="avaliacao-semestre">
+                <p>Avaliação de Situação Semestral</p>
+                <br><br>
+
+                <label for="as-nome">Nome do aluno</label>
+                <input type="text" id="as-nome">
+                <br>
+
+                <label for="as-p1">Nota P1</label>
+                <input type="number" id="as-p1">
+                <br>
+                
+                <label for="as-p2">Nota P2</label>
+                <input type="number" id="as-p2">
+                <br><br>
+
+                <button onclick="calcular()">Calcular Média</button>
+                <script src="js/as-script.js"></script>
+
+                <p id="as-situacao"></p>
+            </div>
+
+            <!-- Celsius para Fahrenheit ✓ -->
+            <div class="celsius-fahrenheit">
+                <p>Conversor <span id="cf-spn_temp1">Celsius</span> para <span id="cf-spn_temp2">Fahrenheit</span></p>
+                <br>
+
+                <button onclick="invertMode()">⮂</button>
+                <br><br>
+
+                <label for="cf-c_in">Temperatura em <span id="cf-temp1">°C</span></label>
+                <input type="number" id="cf-c_in">
+                <br><br>
+
+                <button onclick="convertTemp()">Converter Temperatura</button>
+                <script src="js/cf-script.js"></script>
+                <br><br>
+
+                <p>Convertido para <span id="cf-temp2"></span></p>
+            </div>
+
+            <!-- Maior e Menor ✓ -->
+            <div class="maior-menor">
+                <p>Maior e menor número entre 3</p>
+
+                <label for="mm-n1">1º Número</label>
+                <input type="number" id="mm-n1">
+                <br><br>
+
+                <label for="mm-n2">2º Número</label>
+                <input type="number" id="mm-n2">
+                <br><br>
+
+                <label for="mm-n3">3º Número</label>
+                <input type="number" id="mm-n3">
+                <br><br>
+
+                <button onclick="processar()">Enviar</button>
+                <script src="js/mm-script.js"></script>
+
+                <p>Maior número: <span id="mm-maior"> </span></p>
+                <p>Menor número: <span id="mm-menor"> </span></p> 
+            </div>
+
+            <!-- Alerta de Atraso ✓ -->
+            <div class="alerta-atraso">
+                <p>Alerta com Atraso - 3000ms</p>
+    
+                <p id="aa-status"></p>
+
+                <button onclick="enviar()">Enviar</button>
+                <script src="js/aa-script.js"></script>
+            </div>
+
+            <!-- Conversão de Moeda ✓ -->
+            <div class="conversor-moeda">
+                <p>Conversor BRL/USD</p>
+                <br>
+
+                <label for="cm-brl">Valor para converter (BRL)</label>
+                <input type="number" id="cm-brl">
+                <br><br>
+
+                <button onclick="converter()">Converter</button>
+                <br><br>
+                <script src="js/cm-script.js"></script>
+
+                <label>Valor convertido (USD)</label>
+                <span id="cm-final"></span>
+            </div>
+
+            <!-- Jogo da Memória ✓ -->
+            <div class="jogo-memoria">
+                <p>Teste sua memória</p>
+                <div id="jm-acertos"></div>
+                <div>
+                    <img id="jm-i1" src="img/jogo_memoria/default.png">
+                    <button id="jm-b1" onclick="iniciar()">Iniciar o Teste</button>
+                </div>
+                <div id="jm-d1" style="display:none;">
+                    <ol>
+                        <li>
+                            <input type="radio" class="cor-preto" name="f1" id="jm-f1" aria-label="Preto" title="Preto">
+                            <input type="radio" class="cor-laranja" name="f1" id="jm-f2" aria-label="Laranja" title="Laranja">
+                            <input type="radio" class="cor-amarelo" name="f1" id="jm-f3" aria-label="Amarelo" title="Amarelo">
+                        </li>
+                        <li>
+                            <input type="radio" class="cor-vermelho" name="f2" id="jm-f4" aria-label="Vermelho" title="Vermelho">
+                            <input type="radio" class="cor-laranja" name="f2" id="jm-f5" aria-label="Laranja" title="Laranja">
+                            <input type="radio" class="cor-azul" name="f2" id="jm-f6" aria-label="Azul" title="Azul">
+                        </li>
+                        <li>
+                            <input type="radio" class="cor-amarelo" name="f3" id="jm-f7" aria-label="Amarelo" title="Amarelo">
+                            <input type="radio" class="cor-verde" name="f3" id="jm-f8" aria-label="Verde" title="Verde">
+                            <input type="radio" class="cor-azul" name="f3" id="jm-f9" aria-label="Azul" title="Azul">
+                        </li>
+                        <li>
+                            <input type="radio" class="cor-vermelho" name="f4" id="jm-f10" aria-label="Vermelho" title="Vermelho">
+                            <input type="radio" class="cor-laranja" name="f4" id="jm-f11" aria-label="Laranja" title="Laranja">
+                            <input type="radio" class="cor-azul" name="f4" id="jm-f12" aria-label="Azul" title="Azul">
+                        </li>
+                        <li>
+                            <input type="radio" class="cor-verde" name="f5" id="jm-f13" aria-label="Verde" title="Verde">
+                            <input type="radio" class="cor-marrom" name="f5" id="jm-f14" aria-label="Marrom" title="Marrom">
+                            <input type="radio" class="cor-laranja" name="f5" id="jm-f15" aria-label="Laranja" title="Laranja">
+                        </li>
+                        <li>
+                            <input type="radio" class="cor-verde" name="f6" id="jm-f16" aria-label="Verde" title="Verde">
+                            <input type="radio" class="cor-amarelo" name="f6" id="jm-f17" aria-label="Amarelo" title="Amarelo">
+                            <input type="radio" class="cor-azul" name="f6" id="jm-f18" aria-label="Azul" title="Azul">
+                        </li>
+                        <li>
+                            <input type="radio" class="cor-amarelo" name="f7" id="jm-f19" aria-label="Amarelo" title="Amarelo">
+                            <input type="radio" class="cor-laranja" name="f7" id="jm-f20" aria-label="Laranja" title="Laranja">
+                            <input type="radio" class="cor-azul" name="f7" id="jm-f21" aria-label="Azul" title="Azul">
+                        </li>
+                    </ol>
+                    <button id="jm-b2" onclick="verificar()">Verificar</button>
+                    <script src="js/jm-main.js"></script>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+
+    
+</body>
+</html>
